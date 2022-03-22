@@ -85,3 +85,6 @@ if __name__ == '__main__':
 	thread2 = threading.Thread(target=log_writer.start)
 	thread1.start()
 	thread2.start()
+
+	thread1.join()
+	thread2.join()
