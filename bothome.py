@@ -20,7 +20,7 @@ dispb = Dispatcher(bot)
 bmp = BMP085.BMP085()
 DHT_PIN = 4
 FILENAME = 'meteo.csv'
-SLEEP_TIMEOUT = 10
+SLEEP_TIMEOUT = 300
 
 
 class LogWriter:
