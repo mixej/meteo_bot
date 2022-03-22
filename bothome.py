@@ -22,14 +22,15 @@ DHT_PIN = 4
 FILENAME = 'meteo.csv'
 SLEEP_TIMEOUT = 300
 
+# класс ведения лога показаний с датчиков
+class LogWriter: 
 
-class LogWriter:
-	
-	def write_header(self):
+	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
+	def write_header(self):		
 		with open(FILENAME,'a+') as file:
 			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
-				
+	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
@@ -38,14 +39,15 @@ class LogWriter:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
 			print("Failed to retrieve data from humidity sensor")
-				
+	# метод для запуска функций лога данных в фаил 
+	# проверяет наличие шапки и пишет показания с указанным интервалом			
 	def start(self):
 		self.write_header()
 		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
 
-
+# функция запуска бота телеграмм
 def start_bot():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -81,10 +83,13 @@ async def get_parametrs(message: types.Message):
 	
 if __name__ == '__main__':
 	log_writer = LogWriter()
+	
+	# разделение процессов работы бота и логирования показаний
 	thread1 = threading.Thread(target=start_bot)
 	thread2 = threading.Thread(target=log_writer.start)
 	thread1.start()
 	thread2.start()
-
+	
+	# запуск процессов в цикле????
 	thread1.join()
 	thread2.join()
