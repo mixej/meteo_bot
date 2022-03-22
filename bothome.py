@@ -20,7 +20,7 @@ dispb = Dispatcher(bot)
 bmp = BMP085.BMP085()
 DHT_PIN = 4
 FILENAME = 'meteo.csv'
-SLEEP_TIMEOUT = 10
+SLEEP_TIMEOUT = 300
 
 
 class LogWriter:
@@ -85,3 +85,6 @@ if __name__ == '__main__':
 	thread2 = threading.Thread(target=log_writer.start)
 	thread1.start()
 	thread2.start()
+
+	thread1.join()
+	thread2.join()
