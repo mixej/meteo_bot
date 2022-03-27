@@ -1,7 +1,8 @@
 # класс ведения лога показаний с датчиков
 import os
 import time
-
+import Adafruit_DHT as dht
+import Adafruit_BMP.BMP085 as BMP085
 
 FILENAME = 'meteo.csv'
 SLEEP_TIMEOUT = 300
