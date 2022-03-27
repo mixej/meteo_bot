@@ -20,6 +20,7 @@ class LogWriter:
 	def file_size(self):
 		if os.stat(FILENAME).st_size >= 256:
 			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
+			os.remove(FILENAME)
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
