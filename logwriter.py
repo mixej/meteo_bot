@@ -1,4 +1,8 @@
 # класс ведения лога показаний с датчиков
+import os
+import time
+
+
 FILENAME = 'meteo.csv'
 SLEEP_TIMEOUT = 300
 
