@@ -4,21 +4,21 @@ import time
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 
-FILENAME = filename()
+#FILENAME = filename()
 SLEEP_TIMEOUT = 300
 bmp = BMP085.BMP085()
 DHT_PIN = 4
 
-def filename():
-		filename = 'meteo' + time.strftime('%Y-%m-%d') + '.csv'
+
 
 class LogWriter: 
 
-	
+	def FILENAME():
+		filename = 'meteo' + time.strftime('%Y-%m-%d') + '.csv'
 	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
 	def write_header(self):		
-		with open(FILENAME,'a+') as file:
+		with open(self.FILENAME,'a+') as file:
 			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
 #			elif os.start(FILENAME).st_size == 280:
@@ -28,7 +28,7 @@ class LogWriter:
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
 		if all(var is not None for var in[h,t,p]):
-			with open(FILENAME,'a+') as file:
+			with open(self.FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
 			print("Failed to retrieve data from humidity sensor")
