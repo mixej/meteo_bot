@@ -18,7 +18,7 @@ class LogWriter:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def file_size(self):
-		if os.stat(FILENAME).st_size >= 256:
+		if os.stat(FILENAME).st_size >= 150:
 			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
 			os.remove(FILENAME)
 							
@@ -35,8 +35,9 @@ class LogWriter:
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом			
 	def start(self):
-		self.write_header()
+		
 		while True:
+			self.write_header()
 			self.file_size()
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
