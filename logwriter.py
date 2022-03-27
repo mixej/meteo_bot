@@ -4,22 +4,19 @@ import time
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 
-FILENAME = 'meteo' + time.strftime('%Y-%m-%d') + '.csv'
-SLEEP_TIMEOUT = 300
+FILENAME = 'meteo' + time.strftime('%H:%M') + '.csv'
+SLEEP_TIMEOUT = 10
 bmp = BMP085.BMP085()
 DHT_PIN = 4
 
-
-
 class LogWriter: 
-
 	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
 	def write_header(self):		
 		with open(FILENAME,'a+') as file:
 			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
-#			elif os.start(FILENAME).st_size == 280:
+
 					
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
