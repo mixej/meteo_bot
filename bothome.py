@@ -7,8 +7,8 @@ import os
 import time
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
-import logwriter
 
+from logwriter import LogWriter
 from config import TOKEN
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
