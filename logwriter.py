@@ -6,7 +6,8 @@ import Adafruit_BMP.BMP085 as BMP085
 
 FILENAME = 'meteo.csv'
 SLEEP_TIMEOUT = 300
-
+bmp = BMP085.BMP085()
+DHT_PIN = 4
 
 class LogWriter: 
 
