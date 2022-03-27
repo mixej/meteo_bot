@@ -19,7 +19,7 @@ class LogWriter:
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
 	def write_header(self):		
 		with open(self.FILENAME,'a+') as file:
-			if os.stat(FILENAME).st_size == 0:
+			if os.stat(self.FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
 #			elif os.start(FILENAME).st_size == 280:
 					
