@@ -1,9 +1,9 @@
 import asyncio
 import requests
-import datetime
+#import datetime
 import threading
 
-import os
+#import os
 import time
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
