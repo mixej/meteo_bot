@@ -42,6 +42,5 @@ class LogWriter:
 	def start(self):
 		while True:
 			self.write_header()
-			self.file_size()
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
