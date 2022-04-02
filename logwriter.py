@@ -16,11 +16,16 @@ class LogWriter:
 		with open(FILENAME,'a+') as file:
 			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
+			elif os.stat(FILENAME).st_size >= 150:
+				os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
+				file = open(FILENAME, 'w+')
+				file.seek(0)
+				file.close()
 	
-	def file_size(self):
-		if os.stat(FILENAME).st_size >= 150:
-			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
-			with open(FILENAME,'w'): pass
+#	def file_size(self):
+#		if os.stat(FILENAME).st_size >= 150:
+#			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
+#			with open(FILENAME,'w'): pass
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
@@ -35,7 +40,6 @@ class LogWriter:
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом			
 	def start(self):
-		
 		while True:
 			self.write_header()
 			self.file_size()
