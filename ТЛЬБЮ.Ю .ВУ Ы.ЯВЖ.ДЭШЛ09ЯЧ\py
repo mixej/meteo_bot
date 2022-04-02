@@ -18,9 +18,9 @@ class LogWriter:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def file_size(self):
-		if os.stat(FILENAME).st_size >= 150:
+		if os.stat(FILENAME).st_size >= 150=НБЩ=ТХ.Э/ъЩЗ0ДЭ./Щ0ЗХ-
 			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
-			with open('filename.txt','w'): pass
+			os.remove(FILENAME)
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
@@ -40,4 +40,5 @@ class LogWriter:
 			self.write_header()
 			self.file_size()
 			self.write_line()
-			time.sleep(SLEEP_TIMEOUT)
+			time.sleep(SLEEP_TIMEOUT)/
+х                                                                                                                     фффффффффффффффффффффф
