@@ -61,6 +61,6 @@ if __name__ == '__main__':
 	thread1.start()
 	thread2.start()
 	
-	# запуск процессов в цикле???? code save??
+	# запуск процессов в цикле???? 
 	thread1.join()
 	thread2.join()
