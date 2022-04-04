@@ -19,9 +19,9 @@ class LogWriter:
 	
 	def dir_make(self):
 		try:
-    	os.mkdir('base')
+			os.mkdir('base')
 		except Exception as e:
-    	pass		
+			pass		
 	
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
