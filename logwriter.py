@@ -5,6 +5,7 @@ import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 #FILENAME = 'meteo' + time.strftime('%H:%M') + '.csv'
 FILENAME = 'meteo'
+DIRNAME = 'Base'
 SLEEP_TIMEOUT = 10
 bmp = BMP085.BMP085()
 DHT_PIN = 4
@@ -19,13 +20,13 @@ class LogWriter:
 	
 	def dir_make(self):
 		try:
-			os.mkdir('base')
+			os.mkdir(DIRNAME)
 		except Exception as e:
 			pass		
 	
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
-		os.replace(FILENAME, base/FILENAME + time.strftime('%H:%M') + '.csv')
+		os.replace(FILENAME, DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv')
 		os.system(r' >FILENAME')
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
