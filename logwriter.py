@@ -27,7 +27,7 @@ class LogWriter:
 	def write_line(self):
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
-		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size >= 150:
+		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size <= 150:
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
