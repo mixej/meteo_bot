@@ -14,13 +14,9 @@ class LogWriter:
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
 	def write_header(self):		
 		with open(FILENAME,'a+') as file:
-			if os.stat(FILENAME).st_size < 40:
+			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
-			elif os.stat(FILENAME).st_size >= 150:
-				os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
-				file = open(FILENAME, 'w+')
-				file.seek(0)
-				file.close()
+			
 	
 #	def file_size(self):
 #		if os.stat(FILENAME).st_size >= 150:
@@ -31,11 +27,16 @@ class LogWriter:
 	def write_line(self):
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
-		if all(var is not None for var in[h,t,p]):
+		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size >= 150:
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
-			print("Failed to retrieve data from humidity sensor")
+			os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
+			os.system(r' >FILENAME')
+			self.write_header()
+
+
+#			print("Failed to retrieve data from humidity sensor")
 			
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом			
