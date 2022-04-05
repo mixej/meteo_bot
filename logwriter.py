@@ -1,6 +1,7 @@
 # класс ведения лога показаний с датчиков
 import os
 import time
+import shutil
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 #FILENAME = 'meteo' + time.strftime('%H:%M') + '.csv'
@@ -26,7 +27,7 @@ class LogWriter:
 	
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
-		os.replace('FILENAME', 'DIRNAME/FILENAME')
+		shutil.move('FILENAME', 'DIRNAME/FILENAME')
 		os.rename(DIRNAME/FILENAME, DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv')
 		os.system(r' >FILENAME')
 							
