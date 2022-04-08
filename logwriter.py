@@ -31,7 +31,7 @@ class LogWriter:
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
 #		os.replace(FILENAME, DIRNAME)
-		os.rename(FILENAME, FILENAME + time.strftime('%H:%M') + '.csv')
+		os.rename(FILENAME, self.new_filename()
 #		shutil.copy2(FILENAME, DIRNAME)
 		os.system(r' >FILENAME')
 							
