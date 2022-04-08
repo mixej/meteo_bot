@@ -9,7 +9,7 @@ FILENAME = 'meteo'
 DIRNAME = 'Base'
 SLEEP_TIMEOUT = 300
 bmp = BMP085.BMP085()
-DHT_PIN = 3
+DHT_PIN = 4
 
 class LogWriter: 
 	
@@ -25,7 +25,7 @@ class LogWriter:
 		except Exception as e:
 			pass		
 	
-	#метод переименовывает фаил->перемещает его в папку и стирает исходный фаил	
+	#метод переименовывает фаил->перемещает его в папку и стирает исходный	
 	def file_cp(self):
 		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 		os.rename(FILENAME, new_file)
