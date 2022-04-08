@@ -28,10 +28,8 @@ class LogWriter:
 		
 	def file_cp(self):
 		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
-#		if os.stat(FILENAME).st_size >= 150:
-#		os.replace(FILENAME, DIRNAME)
 		os.rename(FILENAME, new_file)
-#		shutil.copy2(FILENAME, DIRNAME)
+		shutil.copy2(new_file, DIRNAME)
 		open(FILENAME,"w").close()
 #		os.system('r' >FILENAME)
 							
