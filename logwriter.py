@@ -25,13 +25,13 @@ class LogWriter:
 		except Exception as e:
 			pass		
 	
-		
+	#метод переименовывает фаил->перемещает его в папку и стирает исходный фаил	
 	def file_cp(self):
 		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
 		open(FILENAME,"w").close()
-#		os.system('r' >FILENAME)
+
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
