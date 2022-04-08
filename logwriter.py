@@ -29,7 +29,7 @@ class LogWriter:
 	def file_cp(self):
 		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 		os.rename(FILENAME, new_file)
-		shutil.copy2(new_file, DIRNAME)
+		shutil.move(new_file, DIRNAME)
 		open(FILENAME,"w").close()
 #		os.system('r' >FILENAME)
 							
