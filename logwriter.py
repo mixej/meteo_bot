@@ -25,11 +25,14 @@ class LogWriter:
 		except Exception as e:
 			pass		
 	
+	def new_filename(self):
+		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
+	
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
 #		os.replace(FILENAME, DIRNAME)
 #		os.rename(DIRNAME/FILENAME, DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv')
-		shutil.copy2(FILENAME, "DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv'")
+		shutil.copy2(FILENAME, DIRNAME/self.new_filename())
 		os.system(r >FILENAME)
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
