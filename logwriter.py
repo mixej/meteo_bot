@@ -10,7 +10,7 @@ DIRNAME = 'Base'
 SLEEP_TIMEOUT = 10
 bmp = BMP085.BMP085()
 DHT_PIN = 4
-new_file = FILENAME + time.strftime('%H:%M') + '.csv'
+
 class LogWriter: 
 	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
@@ -27,6 +27,7 @@ class LogWriter:
 	
 		
 	def file_cp(self):
+		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 #		if os.stat(FILENAME).st_size >= 150:
 #		os.replace(FILENAME, DIRNAME)
 		os.rename(FILENAME, new_file)
