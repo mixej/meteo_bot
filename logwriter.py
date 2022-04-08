@@ -31,7 +31,7 @@ class LogWriter:
 #		os.replace(FILENAME, DIRNAME)
 		os.rename(FILENAME, new_file)
 #		shutil.copy2(FILENAME, DIRNAME)
-		os.system(r' >FILENAME')
+		os.system(r >FILENAME)
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
