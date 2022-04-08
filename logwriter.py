@@ -27,8 +27,8 @@ class LogWriter:
 	
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
-		os.replace(FILENAME, DIRNAME/FILENAME)
-		os.rename(DIRNAME/FILENAME, DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv')
+		os.replace(FILENAME, DIRNAME\FILENAME + time.strftime('%H:%M') + '.csv')
+#		os.rename(DIRNAME/FILENAME, DIRNAME/FILENAME + time.strftime('%H:%M') + '.csv')
 		os.system(r' >FILENAME')
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
