@@ -10,7 +10,7 @@ DIRNAME = 'Base'
 SLEEP_TIMEOUT = 10
 bmp = BMP085.BMP085()
 DHT_PIN = 4
-
+new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 class LogWriter: 
 	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку
@@ -25,15 +25,13 @@ class LogWriter:
 		except Exception as e:
 			pass		
 	
-	def new_filename(self):
-		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
-	
+		
 	def file_cp(self):
 #		if os.stat(FILENAME).st_size >= 150:
 #		os.replace(FILENAME, DIRNAME)
-		os.rename(FILENAME, self.new_filename()
+		os.rename(FILENAME, new_file)
 #		shutil.copy2(FILENAME, DIRNAME)
-		os.system(r >FILENAME)
+		os.system(r' >FILENAME')
 							
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 	def write_line(self):
