@@ -7,7 +7,7 @@ import Adafruit_BMP.BMP085 as BMP085
 #FILENAME = 'meteo' + time.strftime('%H:%M') + '.csv'
 FILENAME = 'meteo'
 DIRNAME = 'Base'
-SLEEP_TIMEOUT = 300
+SLEEP_TIMEOUT = 600 #время между считыванием показаний
 bmp = BMP085.BMP085()
 DHT_PIN = 4
 
@@ -37,7 +37,7 @@ class LogWriter:
 	def write_line(self):
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
-		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size <= 150:
+		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size <= 4550:
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
