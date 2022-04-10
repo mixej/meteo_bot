@@ -21,6 +21,8 @@ class LogWriter:
 			file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def dir_make(self):
+		if os.stat(FILENAME).st_size == 0:
+			self.write_header()	
 		try:
 			os.mkdir(DIRNAME)
 		except Exception as e:
@@ -40,7 +42,7 @@ class LogWriter:
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
-		if all(var is not None for var in[h,t,p]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
+		if all(var is not None for var in [h,t,p]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), t, h, p/133.3))
 		else:
@@ -52,9 +54,6 @@ class LogWriter:
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом	
 		self.dir_make()
-		if os.stat(FILENAME).st_size == 0:
-			self.write_header()	
-			
 		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
