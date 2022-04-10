@@ -22,8 +22,9 @@ DHT_PIN = 4
 
 
 
-# функция запуска бота телеграмм
+
 def start_bot():
+# функция запуска бота телеграмм
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     executor.start_polling(dispb)
