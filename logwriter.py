@@ -53,7 +53,9 @@ class LogWriter:
 	def start(self):
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом	
+		with open(FILENAME,'w') as file:
 		self.dir_make()
+		
 		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
