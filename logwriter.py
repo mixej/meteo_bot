@@ -55,7 +55,7 @@ class LogWriter:
 	# проверяет наличие шапки и пишет показания с указанным интервалом	
 		
 		self.dir_make()
-		
+		self.write_header()
 		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
