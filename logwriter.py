@@ -18,7 +18,7 @@ class LogWriter:
 	def write_header(self):	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку	
 		with open(FILENAME,'w') as file:
-			if os.stat(FILENAME).st_size == 0:
+#			if os.stat(FILENAME).st_size == 0:
 				file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def dir_make(self):
@@ -34,7 +34,7 @@ class LogWriter:
 		new_file = FILENAME + time.strftime('%H:%M') + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
-#		open(FILENAME,"w").close()
+		open(FILENAME,"w").close()
 
 							
 	

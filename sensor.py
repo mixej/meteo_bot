@@ -15,7 +15,7 @@ class Sensor:
 		h, t = dht.read_retry(dht.DHT22, DHT_PIN)
 		p = bmp.read_pressure()
 		self.humidity = h
-		self.pressure = p
+		self.pressure = p/133.3
 		self.temperature = t
 		self.date = time.strftime('%m/%d/%y')
 		self.time = time.strftime('%H:%M')
