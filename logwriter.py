@@ -18,11 +18,11 @@ class LogWriter:
 	def write_header(self):	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку	
 		with open(FILENAME,'w') as file:
-			file.write('Date,Time,Temp,Hum,Press\r\n')
+			if os.stat(FILENAME).st_size == 0:
+				file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def dir_make(self):
-		if os.stat(FILENAME).st_size == 0:
-			self.write_header()	
+
 		try:
 			os.mkdir(DIRNAME)
 		except Exception as e:
@@ -53,7 +53,7 @@ class LogWriter:
 	def start(self):
 	# метод для запуска функций лога данных в фаил 
 	# проверяет наличие шапки и пишет показания с указанным интервалом	
-		with open(FILENAME,'w') as file:
+		
 		self.dir_make()
 		
 		while True:
