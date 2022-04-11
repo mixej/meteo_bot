@@ -42,7 +42,7 @@ class LogWriter:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
 		else:
 			self.file_cp()
-			self.write_header()
+#			self.write_header()
 
 
 	def start(self):
