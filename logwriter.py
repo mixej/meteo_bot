@@ -56,5 +56,6 @@ class LogWriter:
 		except FileNotFoundError:
 			self.write_header()
 		while True:
+			sensor = Sensor()
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
