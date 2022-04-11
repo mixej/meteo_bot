@@ -8,10 +8,10 @@ FILENAME = 'meteo'
 DIRNAME = 'Base'
 SLEEP_TIMEOUT = 10 #время между считыванием показаний
 MAXFILESIZE = 100 #РАЗМЕР ФАЙЛА ДЛЯ КОПИРОВАНИЯ А АРХИВ
-sensor = Sensor()
+
 
 class LogWriter: 
-	
+	sensor = Sensor()
 	
 	def write_header(self):	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку	
@@ -28,6 +28,7 @@ class LogWriter:
 	
 	def file_cp(self):
 	#метод переименовывает фаил->перемещает его в папку и стирает исходный	
+		
 		new_file = FILENAME + sensor.time + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
@@ -56,6 +57,6 @@ class LogWriter:
 		except FileNotFoundError:
 			self.write_header()
 		while True:
-			sensor = Sensor()
+			
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
