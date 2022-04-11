@@ -31,7 +31,7 @@ class LogWriter:
 		new_file = FILENAME + sensor.time + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
-		open(FILENAME,"w").close()
+		
 
 							
 	
