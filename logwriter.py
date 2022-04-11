@@ -39,7 +39,7 @@ class LogWriter:
 	# метод считывает показания с датчиков и пишет их в лог фаил			
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
 			with open(FILENAME,'a+') as file:
-				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.hum, sensor.press, sensor.temp)
+				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.hum, sensor.press, sensor.temp))
 		else:
 			self.file_cp()
 			self.write_header()
