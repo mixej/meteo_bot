@@ -50,10 +50,11 @@ class LogWriter:
 	# проверяет наличие шапки и пишет показания с указанным интервалом	
 		
 		self.dir_make()
-		
-		if os.stat(FILENAME).st_size == 0:
+		try:
+			if os.stat(FILENAME).st_size == 0:
+				self.write_header()
+		except FileNotFoundError:
 			self.write_header()
-			
 		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)
