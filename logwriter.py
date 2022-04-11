@@ -2,7 +2,7 @@
 import os
 import time
 import shutil
-import sensor 
+from sensor import Sensor 
 
 FILENAME = 'meteo'
 DIRNAME = 'Base'
