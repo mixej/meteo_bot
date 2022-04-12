@@ -20,10 +20,10 @@ class LogWriter:
 	
 	def dir_make(self):
 
-		try:
+#		try:
 			os.mkdir(DIRNAME)
-		except Exception as e:
-			pass		
+#		except Exception as e:
+#			pass		
 	
 	
 	def file_cp(self):
