@@ -18,4 +18,4 @@ class Sensor:
 		self.press = p/133.3
 		self.temp = t
 		self.date = time.strftime('%m/%d/%y')
-		self.time = time.strftime('%H:%M:%S')
+		self.time = time.strftime('%H:%M')

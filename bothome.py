@@ -3,8 +3,6 @@ import requests
 import threading
 
 import time
-import Adafruit_DHT as dht
-import Adafruit_BMP.BMP085 as BMP085
 
 from logwriter import LogWriter
 from config import TOKEN
@@ -16,8 +14,7 @@ from sensor import Sensor
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
 
-bmp = BMP085.BMP085()
-DHT_PIN = 4
+
 
 
 
@@ -25,9 +22,10 @@ DHT_PIN = 4
 
 def start_bot():
 # функция запуска бота телеграмм
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    executor.start_polling(dispb)
+	sensor.__init__()
+	loop = asyncio.new_event_loop()
+	asyncio.set_event_loop(loop)
+	executor.start_polling(dispb)
 		
 		
 @dispb.message_handler(commands=["start"])		
@@ -36,25 +34,20 @@ async def start_comand(message: types.Message):
 
 @dispb.message_handler(commands=["temp"])
 async def get_parametrs(message: types.Message):
-
-	h, t = dht.read_retry(dht.DHT22, DHT_PIN)
-	await message.answer("{0} Температура в комнате, {1:.1f}С".format(time.strftime('%H:%M'), t))
+	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
 	
 @dispb.message_handler(commands=["hum"])
 async def get_parametrs(message: types.Message):
-
-	h, t = dht.read_retry(dht.DHT22, DHT_PIN)
-	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(time.strftime('%H:%M'), h))
+	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(sensor.time, sensor.hum))
 	
 @dispb.message_handler(commands=["press"])
 async def get_parametrs(message: types.Message):
-
-	p = bmp.read_pressure()
-	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(time.strftime('%H:%M'), p/133.3))	
+	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(sensor.time, sensor.press))	
 
 	
 if __name__ == '__main__':
 	log_writer = LogWriter()
+	sensor = Sensor()
 	
 	# разделение процессов работы бота и логирования показаний
 	thread1 = threading.Thread(target=start_bot)

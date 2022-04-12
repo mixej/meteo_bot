@@ -19,11 +19,11 @@ class LogWriter:
 			file.write('Date,Time,Temp,Hum,Press\r\n')
 	
 	def dir_make(self):
-
-#		try:
+	# создание директории для лога данных
+		try:
 			os.mkdir(DIRNAME)
-#		except Exception as e:
-#			pass		
+		except FileExistsError:
+			pass		
 	
 	
 	def file_cp(self):
