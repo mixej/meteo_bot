@@ -13,7 +13,7 @@ from sensor import Sensor
 
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
-
+sensor = Sensor()
 
 
 
