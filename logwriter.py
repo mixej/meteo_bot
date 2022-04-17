@@ -38,7 +38,7 @@ class LogWriter:
 	
 	def write_line(self):
 	# метод считывает показания с датчиков и пишет их в лог фаил	
-	sensor = Sensor()		
+		sensor = Sensor()		
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
 			
 			with open(FILENAME,'a+') as file:
