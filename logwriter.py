@@ -8,7 +8,7 @@ FILENAME = 'meteo'
 DIRNAME = 'Base'
 SLEEP_TIMEOUT = 10 #время между считыванием показаний
 MAXFILESIZE = 100 #РАЗМЕР ФАЙЛА ДЛЯ КОПИРОВАНИЯ А АРХИВ
-sensor = Sensor()
+
 
 class LogWriter: 
 	
@@ -37,9 +37,10 @@ class LogWriter:
 							
 	
 	def write_line(self):
-	# метод считывает показания с датчиков и пишет их в лог фаил			
+	# метод считывает показания с датчиков и пишет их в лог фаил	
+	sensor = Sensor()		
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
-			sensor.__init__()
+			
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
 		else:
