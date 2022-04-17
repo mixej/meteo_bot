@@ -13,7 +13,7 @@ from sensor import Sensor
 
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
-sensor = Sensor()
+
 
 
 
@@ -22,7 +22,7 @@ sensor = Sensor()
 
 def start_bot():
 # функция запуска бота телеграмм
-	sensor.__init__()
+	
 	loop = asyncio.new_event_loop()
 	asyncio.set_event_loop(loop)
 	executor.start_polling(dispb)

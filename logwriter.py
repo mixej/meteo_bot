@@ -28,7 +28,7 @@ class LogWriter:
 	
 	def file_cp(self):
 	#метод переименовывает фаил->перемещает его в папку и стирает исходный	
-		
+		sensor = Sensor()
 		new_file = FILENAME + sensor.time + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
