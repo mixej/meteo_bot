@@ -22,7 +22,7 @@ dispb = Dispatcher(bot)
 
 def start_bot():
 # функция запуска бота телеграмм
-#	sensor = Sensor()
+	sensor = Sensor()
 	loop = asyncio.new_event_loop()
 	asyncio.set_event_loop(loop)
 	executor.start_polling(dispb)
@@ -47,7 +47,7 @@ async def get_parametrs(message: types.Message):
 	
 if __name__ == '__main__':
 	log_writer = LogWriter()
-	sensor = Sensor()
+#	sensor = Sensor()
 	
 	# разделение процессов работы бота и логирования показаний
 	thread1 = threading.Thread(target=start_bot)
