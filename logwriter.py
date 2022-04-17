@@ -6,8 +6,8 @@ from sensor import Sensor
 
 FILENAME = 'meteo'
 DIRNAME = 'Base'
-SLEEP_TIMEOUT = 10 #время между считыванием показаний
-MAXFILESIZE = 100 #РАЗМЕР ФАЙЛА ДЛЯ КОПИРОВАНИЯ А АРХИВ
+SLEEP_TIMEOUT = 300 # время между считыванием показаний
+MAXFILESIZE = 2000 # размер файла для копирования в архив
 
 
 class LogWriter: 
@@ -27,9 +27,10 @@ class LogWriter:
 	
 	
 	def file_cp(self):
-	#метод переименовывает фаил->перемещает его в папку и стирает исходный	
+	# метод переименовывает фаил->перемещает его в папку и стирает исходный
+	# добавить проверку совпадения имени файла	
 		sensor = Sensor()
-		new_file = FILENAME + sensor.time + '.csv'
+		new_file = FILENAME + sensor.filename + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
 		self.write_header()
@@ -40,12 +41,10 @@ class LogWriter:
 	# метод считывает показания с датчиков и пишет их в лог фаил	
 		sensor = Sensor()		
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
-			
 			with open(FILENAME,'a+') as file:
 				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
 		else:
 			self.file_cp()
-#			self.write_header()
 
 
 	def start(self):
@@ -58,7 +57,7 @@ class LogWriter:
 				self.write_header()
 		except FileNotFoundError:
 			self.write_header()
-		while True:
 			
+		while True:
 			self.write_line()
 			time.sleep(SLEEP_TIMEOUT)

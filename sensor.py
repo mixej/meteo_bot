@@ -1,4 +1,4 @@
-#класс получения показаний с датчиков
+# класс получения показаний с датчиков
 
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
@@ -18,4 +18,5 @@ class Sensor:
 		self.press = p/133.3
 		self.temp = t
 		self.date = time.strftime('%m/%d/%y')
-		self.time = time.strftime('%H:%M:%S')
+		self.time = time.strftime('%H:%M')
+		self.filename = time.strftime('%m/%d/%H:%M')
