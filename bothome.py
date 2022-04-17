@@ -22,7 +22,7 @@ dispb = Dispatcher(bot)
 
 def start_bot():
 # функция запуска бота телеграмм
-	sensor = Sensor()
+#	sensor = Sensor()
 	loop = asyncio.new_event_loop()
 	asyncio.set_event_loop(loop)
 	executor.start_polling(dispb)
@@ -34,6 +34,7 @@ async def start_comand(message: types.Message):
 
 @dispb.message_handler(commands=["temp"])
 async def get_parametrs(message: types.Message):
+	sensor = Sensor()
 	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
 	
 @dispb.message_handler(commands=["hum"])
