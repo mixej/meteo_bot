@@ -6,8 +6,8 @@ from sensor import Sensor
 
 FILENAME = 'meteo'
 DIRNAME = 'Base'
-SLEEP_TIMEOUT = 300 # время между считыванием показаний
-MAXFILESIZE = 2000 # размер файла для копирования в архив
+SLEEP_TIMEOUT = 3 # время между считыванием показаний
+MAXFILESIZE = 200 # размер файла для копирования в архив
 
 
 class LogWriter: 
@@ -30,7 +30,7 @@ class LogWriter:
 	# метод переименовывает фаил->перемещает его в папку и стирает исходный
 	# добавить проверку совпадения имени файла	
 		sensor = Sensor()
-		new_file = FILENAME + sensor.filename + '.csv'
+		new_file = sensor.filename + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
 		self.write_header()
@@ -42,7 +42,7 @@ class LogWriter:
 		sensor = Sensor()		
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
 			with open(FILENAME,'a+') as file:
-				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f},\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
+				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f}\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
 		else:
 			self.file_cp()
 

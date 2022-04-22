@@ -16,10 +16,6 @@ dispb = Dispatcher(bot)
 
 
 
-
-
-
-
 def start_bot():
 # функция запуска бота телеграмм
 
