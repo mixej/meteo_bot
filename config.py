@@ -1,4 +1,3 @@
-
 # имена файлов
 FILENAME = 'meteo'
 DIRNAME = 'Base'
