@@ -19,4 +19,4 @@ class Sensor:
 		self.temp = t
 		self.date = time.strftime('%m/%d/%y')
 		self.time = time.strftime('%H:%M')
-		self.filename = time.strftime('%m/%d/%H:%M')
+		

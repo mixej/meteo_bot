@@ -29,8 +29,8 @@ class LogWriter:
 	def file_cp(self):
 	# метод переименовывает фаил->перемещает его в папку и стирает исходный
 	# добавить проверку совпадения имени файла	
-	#	sensor = Sensor()
-		new_file = time.strftime('%m/%d/%H:%M') + '.csv'
+		sensor = Sensor()
+		new_file = time.strftime('%m-%d_%H:%M') + '.csv'
 		os.rename(FILENAME, new_file)
 		shutil.move(new_file, DIRNAME)
 		self.write_header()
