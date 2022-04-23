@@ -5,11 +5,6 @@ import shutil
 from sensor import Sensor 
 from config import FILENAME, DIRNAME, SLEEP_TIMEOUT, MAXFILESIZE
 
-#FILENAME = 'meteo'
-#DIRNAME = 'Base'
-#SLEEP_TIMEOUT = 5 # время между считыванием показаний
-#MAXFILESIZE = 150 # размер файла для копирования в архив
-
 
 class LogWriter: 
 	
