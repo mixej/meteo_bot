@@ -1,11 +1,10 @@
 import asyncio
 import requests
 import threading
-
+import config
 import time
 
 from logwriter import LogWriter
-from config import TOKEN
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
