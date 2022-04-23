@@ -6,8 +6,8 @@ from sensor import Sensor
 
 FILENAME = 'meteo'
 DIRNAME = 'Base'
-SLEEP_TIMEOUT = 3 # время между считыванием показаний
-MAXFILESIZE = 200 # размер файла для копирования в архив
+SLEEP_TIMEOUT = 5 # время между считыванием показаний
+MAXFILESIZE = 150 # размер файла для копирования в архив
 
 
 class LogWriter: 
