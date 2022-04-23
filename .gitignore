@@ -1,4 +1,4 @@
 .venv/
-config.py
+bot_config.py
 __pycache__/
 meteo.csv
