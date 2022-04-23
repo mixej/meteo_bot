@@ -1,9 +1,8 @@
+
+import threading
+
 from logwriter import LogWriter
 from bothome import start_bot
-
-
-
-
 
 
 if __name__ == '__main__':

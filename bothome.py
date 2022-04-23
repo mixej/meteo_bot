@@ -1,6 +1,5 @@
 import asyncio
 import requests
-import threading
 import time
 
 from logwriter import LogWriter
