@@ -3,7 +3,7 @@ import os
 import time
 import shutil
 from sensor import Sensor 
-import config
+from config import FILENAME, DIRNAME, SLEEP_TIMEOUT, MAXFILESIZE
 
 #FILENAME = 'meteo'
 #DIRNAME = 'Base'
