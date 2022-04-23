@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 import threading
 
 from logwriter import LogWriter
