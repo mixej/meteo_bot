@@ -3,7 +3,7 @@
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 import time
-import config
+from config import bmp, DHT_PIN
 
 #bmp = BMP085.BMP085()
 #DHT_PIN = 4
