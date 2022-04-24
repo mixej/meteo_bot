@@ -32,7 +32,7 @@ async def cmd_start(message: types.Message):
 #	keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 #	buttons = ["temp", "hum", "press"]
 #	keyboard.add(*buttons)
-	await message.answer("Привет! какие показания тебя интересуют?\r\n /temp-Температура\r\n /hum-Влажность\r\n /press-Давление", reply_markup=kb.keyboard)
+	await message.answer("Привет! какие показания тебя интересуют?\r\n /temp-Температура\r\n /hum-Влажность\r\n /press-Давление", reply_markup=keyboard)
 
 @dispb.message_handler(commands=["temp"]) # температура
 async def get_parametrs(message: types.Message):
