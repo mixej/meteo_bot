@@ -9,6 +9,7 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from sensor import Sensor
+from config import NORM_TEMP, NORM_HUM, NORM_PRESS
 
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
@@ -35,7 +36,12 @@ async def cmd_start(message: types.Message):
 @dispb.message_handler(Text(equals="температура")) # температура
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
-	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
+	if sensor.temp < NORM_TEMP
+		await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp)\n"температура ниже нормы")
+	elif sensor.temp > NORM_TEMP
+		await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp)\n"температура выше нормы")
+	else
+		await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp)\n"температура в норме")
 	
 @dispb.message_handler(Text(equals="влажность")) # влажность
 async def get_parametrs(message: types.Message):
