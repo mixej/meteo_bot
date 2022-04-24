@@ -46,7 +46,12 @@ async def get_parametrs(message: types.Message):
 @dispb.message_handler(Text(equals="влажность")) # влажность
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
-	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(sensor.time, sensor.hum))
+	if sensor.hum < min(NORM_HUM):
+		await message.answer("{0} Влажность в комнате, {1:.1f}%\r\nвлажность ниже нормы".format(sensor.time, sensor.hum))
+	elif sensor.hum > max(NORM_HUM):
+		await message.answer("{0} Влажность в комнате, {1:.1f}%\r\nвлажность выше нормы".format(sensor.time, sensor.hum))
+	else:
+		await message.answer("{0} Влажность в комнате, {1:.1f}%\r\nвлажность в норме".format(sensor.time, sensor.hum))
 	
 @dispb.message_handler(Text(equals="давление")) # давление атмосферное
 async def get_parametrs(message: types.Message):
