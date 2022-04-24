@@ -4,6 +4,7 @@ import time
 
 from logwriter import LogWriter
 from bot_config import TOKEN
+from aiogram.dispatcher.filters import Text
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
