@@ -37,12 +37,12 @@ async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
 	
-@dispb.message_handler(commands="hum") # влажность
+@dispb.message_handler(Text(equals="hum")) # влажность
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(sensor.time, sensor.hum))
 	
-@dispb.message_handler(commands="press") # давление атмосферное
+@dispb.message_handler(Text(equals="press")) # давление атмосферное
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(sensor.time, sensor.press))	
