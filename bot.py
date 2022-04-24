@@ -36,7 +36,7 @@ async def cmd_start(message: types.Message):
 @dispb.message_handler(Text(equals="температура")) # температура
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
-	if sensor.temp < min(float(NORM_TEMP)):
+	if sensor.temp < min(NORM_TEMP):
 		await message.answer("{0} Температура в комнате, {1:.1f}С\r\nтемпература ниже нормы".format(sensor.time, sensor.temp))
 	elif sensor.temp > max(float(NORM_TEMP)):
 		await message.answer("{0} Температура в комнате, {1:.1f}С\r\nтемпература выше нормы".format(sensor.time, sensor.temp))
