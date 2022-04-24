@@ -57,9 +57,9 @@ async def get_parametrs(message: types.Message):
 @dispb.message_handler(Text(equals="давление")) # давление атмосферное
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
-	if sensor.hum < min(NORM_PERSS):
+	if sensor.hum < min(NORM_PRESS):
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление ниже нормы".format(sensor.time, sensor.press))
-	elif sensor.hum > max(NORM_PERSS):
+	elif sensor.hum > max(NORM_PRESS):
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление выше нормы".format(sensor.time, sensor.press))
 	else:
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
