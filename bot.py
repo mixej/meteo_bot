@@ -22,8 +22,8 @@ def start_bot():
 	executor.start_polling(dispb)
 		
 		
-@dispb.message_handler(commands=["start"])		
-async def start_comand(message: types.Message):
+@dispb.message_handler(commands="start")		
+async def cmd_start(message: types.Message):
 	keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 	buttons = ["temp", "hum", "press"]
 	keyboard.add(*buttons)
