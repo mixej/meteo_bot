@@ -14,6 +14,7 @@ from config import NORM_TEMP, NORM_HUM, NORM_PRESS
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
 
+# создание кнопок
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["температура", "влажность", "давление"]
 keyboard.add(*buttons)
@@ -56,6 +57,11 @@ async def get_parametrs(message: types.Message):
 @dispb.message_handler(Text(equals="давление")) # давление атмосферное
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
-	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(sensor.time, sensor.press))	
+	if sensor.hum < min(NORM_PERSS):
+		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление ниже нормы".format(sensor.time, sensor.press))
+	elif sensor.hum > max(NORM_PERSS):
+		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление выше нормы".format(sensor.time, sensor.press))
+	else:
+		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
 
 
