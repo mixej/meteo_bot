@@ -24,6 +24,9 @@ def start_bot():
 		
 @dispb.message_handler(commands=["start"])		
 async def start_comand(message: types.Message):
+	keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+	buttons = ["temp", "hum", "press"]
+	keyboard.add(*buttons)
 	await message.answer("Привет! какие показания тебя интересуют?\r\n /temp-Температура\r\n /hum-Влажность\r\n /press-Давление")
 
 @dispb.message_handler(commands=["temp"]) # температура
