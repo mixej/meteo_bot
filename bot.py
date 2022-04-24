@@ -32,19 +32,19 @@ async def cmd_start(message: types.Message):
 #	keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 #	buttons = ["temp", "hum", "press"]
 #	keyboard.add(*buttons)
-	await message.answer("Привет! какие показания тебя интересуют?\r\n /temp-Температура\r\n /hum-Влажность\r\n /press-Давление", reply_markup=keyboard)
+	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard)
 
-@dispb.message_handler(commands=["temp"]) # температура
+@dispb.message_handler(commands="temp") # температура
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
 	
-@dispb.message_handler(commands=["hum"]) # влажность
+@dispb.message_handler(commands="hum") # влажность
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(sensor.time, sensor.hum))
 	
-@dispb.message_handler(commands=["press"]) # давление атмосферное
+@dispb.message_handler(commands="press") # давление атмосферное
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(sensor.time, sensor.press))	
