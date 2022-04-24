@@ -14,7 +14,7 @@ bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
 
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-buttons = ["temp", "hum", "press"]
+buttons = ["температура", "влажность", "давление"]
 keyboard.add(*buttons)
 
 
@@ -32,17 +32,17 @@ def start_bot():
 async def cmd_start(message: types.Message):
 	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard)
 
-@dispb.message_handler(Text(equals="temp")) # температура
+@dispb.message_handler(Text(equals="температура")) # температура
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Температура в комнате, {1:.1f}С".format(sensor.time, sensor.temp))
 	
-@dispb.message_handler(Text(equals="hum")) # влажность
+@dispb.message_handler(Text(equals="влажность")) # влажность
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Влажность в комнате, {1:.1f}%".format(sensor.time, sensor.hum))
 	
-@dispb.message_handler(Text(equals="press")) # давление атмосферное
+@dispb.message_handler(Text(equals="давление")) # давление атмосферное
 async def get_parametrs(message: types.Message):
 	sensor = Sensor()
 	await message.answer("{0} Давление, {1:.1f} мм рт.ст".format(sensor.time, sensor.press))	
