@@ -14,12 +14,15 @@ from config import NORM_TEMP, NORM_HUM, NORM_PRESS
 bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
 
-# создание кнопок
+# создание меню
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["температура", "влажность", "давление"]
-buttons_2 = ["сервис"]
-keyboard.add(*buttons).add(*buttons_2)
-#markup5 = ReplyKeyboardMarkup().row(button1, button2, button3).add(KeyboardButton('Средний ряд'))
+buttons_1 = ["сервис"]
+keyboard.add(*buttons).add(*buttons_1)
+
+keyboard_2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
+buttons_2 = ["интервал записи", "интервал времени"]
+keyboard_2.add(*buttons_2)
 
 
 
@@ -65,4 +68,15 @@ async def get_parametrs(message: types.Message):
 	else:
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
 
-
+@dispb.message_handler(Text(equals="сервис")) 
+async def get_parametrs(message: types.Message):
+	await message.answer("что поменять?", reply_markup=keyboard_2 )
+	
+	
+	
+	
+	
+	
+	
+	
+	
