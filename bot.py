@@ -22,7 +22,8 @@ keyboard.add(*buttons).add(*buttons_1)
 
 keyboard_2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons_2 = ["интервал записи", "интервал времени"]
-keyboard_2.add(*buttons_2)
+buttons_b = ["назад"]
+keyboard_2.add(*buttons_2).add(*buttons_b)
 
 
 
@@ -70,9 +71,11 @@ async def get_parametrs(message: types.Message):
 
 @dispb.message_handler(Text(equals="сервис")) 
 async def get_parametrs(message: types.Message):
-	await message.answer("что поменять?", reply_markup=keyboard_2 )
+	await message.answer("что поменять?", reply_markup=keyboard_2)
 	
-	
+@dispb.message_handler(Text(equals="назад")) 
+async def get_parametrs(message: types.Message):
+	await message.answer(reply_markup=keyboard)	
 	
 	
 	
