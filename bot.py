@@ -18,7 +18,7 @@ dispb = Dispatcher(bot)
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["температура", "влажность", "давление"]
 buttons_2 = ["сервис"]
-keyboard.add(*buttons, buttons_2)
+keyboard.add(buttons, buttons_2)
 
 
 
