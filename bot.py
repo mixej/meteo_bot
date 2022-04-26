@@ -76,7 +76,7 @@ async def get_parametrs(message: types.Message):
 @dispb.message_handler(Text(equals="интервал времени")) # 
 async def get_parametrs(message: types.Message):
 	with open('test.txt','w') as file:
-			file.write('тестовая сторка'message.text)
+			file.write('тестовая сторка', message.text)
 	
 	await message.answer("готово", reply_markup=keyboard_servis)
 	
