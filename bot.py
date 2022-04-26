@@ -73,6 +73,14 @@ async def get_parametrs(message: types.Message):
 async def get_parametrs(message: types.Message):
 	await message.answer("что поменять?", reply_markup=keyboard_servis)
 	
+@dispb.message_handler(Text(equals="интервал времени")) # меню сервис
+async def get_parametrs(message: types.Message):
+	with open('test.txt','w') as file:
+			file.write('тестовая сторка')
+	
+	await message.answer("готово?", reply_markup=keyboard_servis)
+	
+	
 @dispb.message_handler(Text(equals="назад")) # возврат назад
 async def get_parametrs(message: types.Message):
 	await message.answer("есть",reply_markup=keyboard_main)	
