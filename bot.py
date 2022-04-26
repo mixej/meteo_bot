@@ -15,15 +15,15 @@ bot = Bot(token=TOKEN)
 dispb = Dispatcher(bot)
 
 # создание меню
-keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-buttons = ["температура", "влажность", "давление"]
-buttons_1 = ["сервис"]
-keyboard.add(*buttons).add(*buttons_1)
+keyboard_main = types.ReplyKeyboardMarkup(resize_keyboard=True)
+buttons_info = ["температура", "влажность", "давление"]
+buttons_servis = ["сервис"]
+keyboard_main.add(*buttons_info).add(*buttons_servis)
 
-keyboard_2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
-buttons_2 = ["интервал записи", "интервал времени"]
-buttons_b = ["назад"]
-keyboard_2.add(*buttons_2).add(*buttons_b)
+keyboard_servis = types.ReplyKeyboardMarkup(resize_keyboard=True)
+buttons_log = ["интервал записи", "интервал времени"]
+buttons_beck = ["назад"]
+keyboard_servis.add(*buttons_log).add(*buttons_beck)
 
 
 
@@ -35,9 +35,9 @@ def start_bot():
 	executor.start_polling(dispb)
 		
 		
-@dispb.message_handler(commands="start")		
+@dispb.message_handler(commands="start")		# главное меню
 async def cmd_start(message: types.Message):
-	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard )
+	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard_main )
 
 @dispb.message_handler(Text(equals="температура")) # температура
 async def get_parametrs(message: types.Message):
@@ -69,13 +69,13 @@ async def get_parametrs(message: types.Message):
 	else:
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
 
-@dispb.message_handler(Text(equals="сервис")) 
+@dispb.message_handler(Text(equals="сервис")) # меню сервис
 async def get_parametrs(message: types.Message):
-	await message.answer("что поменять?", reply_markup=keyboard_2)
+	await message.answer("что поменять?", reply_markup=keyboard_servis)
 	
-@dispb.message_handler(Text(equals="назад")) 
+@dispb.message_handler(Text(equals="назад")) # возврат назад
 async def get_parametrs(message: types.Message):
-	await message.answer("есть?",reply_markup=keyboard)	
+	await message.answer("есть",reply_markup=keyboard_main)	
 	
 	
 	
