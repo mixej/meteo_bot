@@ -18,8 +18,8 @@ dispb = Dispatcher(bot)
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["температура", "влажность", "давление"]
 buttons_2 = ["сервис"]
-keyboard.add(buttons, buttons_2)
-
+keyboard.add(*buttons).add(KeyboardButton(buttons_2))
+#markup5 = ReplyKeyboardMarkup().row(button1, button2, button3).add(KeyboardButton('Средний ряд'))
 
 
 
