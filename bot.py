@@ -75,7 +75,7 @@ async def get_parametrs(message: types.Message):
 	
 @dispb.message_handler(Text(equals="назад")) 
 async def get_parametrs(message: types.Message):
-	await message.answer(reply_markup=keyboard)	
+	reply_markup=keyboard	
 	
 	
 	
