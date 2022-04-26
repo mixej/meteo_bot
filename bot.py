@@ -17,7 +17,8 @@ dispb = Dispatcher(bot)
 # создание кнопок
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons = ["температура", "влажность", "давление"]
-keyboard.add(*buttons)
+buttons_2 = ["сервис"]
+keyboard.add(*buttons, buttons_2)
 
 
 
@@ -32,7 +33,7 @@ def start_bot():
 		
 @dispb.message_handler(commands="start")		
 async def cmd_start(message: types.Message):
-	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard)
+	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard )
 
 @dispb.message_handler(Text(equals="температура")) # температура
 async def get_parametrs(message: types.Message):

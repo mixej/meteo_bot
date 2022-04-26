@@ -1,12 +1,19 @@
 # класс получения показаний с датчиков
 
+
+
+import RPi.GPIO as GPIO
 import Adafruit_DHT as dht
 import Adafruit_BMP.BMP085 as BMP085
 import time
 #from config import bmp, DHT_PIN
 
+
+
 bmp = BMP085.BMP085()
 DHT_PIN = 4
+
+
 
 
 class Sensor:
