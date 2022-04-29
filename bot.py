@@ -25,6 +25,11 @@ buttons_log = ["интервал записи", "интервал времени
 buttons_beck = ["назад"]
 keyboard_servis.add(*buttons_log).add(*buttons_beck)
 
+keyboard_size = types.ReplyKeyboardMarkup(resize_keyboard=True)
+buttons_size = ["1 час", "3 часа","6 часов","12 часов","24 часа"]
+#buttons_beck = ["назад"]
+keyboard_servis.add(*buttons_size)#.add(*buttons_beck)
+
 
 
 def start_bot():
@@ -50,7 +55,7 @@ async def get_temp(message: types.Message):
 		await message.answer("{0} Температура в комнате, {1:.1f}С\r\nтемпература в норме".format(sensor.time, sensor.temp))
 	
 @dispb.message_handler(Text(equals="влажность")) # влажность
-async def get_parametrs(message: types.Message):
+async def get_hum(message: types.Message):
 	sensor = Sensor()
 	if sensor.hum < min(NORM_HUM):
 		await message.answer("{0} Влажность в комнате, {1:.1f}%\r\nвлажность ниже нормы".format(sensor.time, sensor.hum))
@@ -60,7 +65,7 @@ async def get_parametrs(message: types.Message):
 		await message.answer("{0} Влажность в комнате, {1:.1f}%\r\nвлажность в норме".format(sensor.time, sensor.hum))
 	
 @dispb.message_handler(Text(equals="давление")) # давление атмосферное
-async def get_parametrs(message: types.Message):
+async def get_press(message: types.Message):
 	sensor = Sensor()
 	if sensor.press < min(NORM_PRESS):
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление ниже нормы".format(sensor.time, sensor.press))
@@ -70,11 +75,14 @@ async def get_parametrs(message: types.Message):
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
 
 @dispb.message_handler(Text(equals="сервис")) # меню сервис
-async def get_parametrs(message: types.Message):
+async def servis(message: types.Message):
 	await message.answer("что поменять?", reply_markup=keyboard_servis)
 	
 @dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
-async def get_parametrs(message: types.Message):
+async def size_change(message: types.Message):
+	await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
+	
+	
 	with open('test.txt','w') as file:
 			file.write('тестовая сторка')
 	
