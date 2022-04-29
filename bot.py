@@ -8,6 +8,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+from aiogram.types import Message
 from sensor import Sensor
 from config import NORM_TEMP, NORM_HUM, NORM_PRESS
 
