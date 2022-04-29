@@ -40,7 +40,7 @@ async def cmd_start(message: types.Message):
 	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard_main )
 
 @dispb.message_handler(Text(equals="температура")) # температура
-async def get_parametrs(message: types.Message):
+async def get_temp(message: types.Message):
 	sensor = Sensor()
 	if sensor.temp < min(NORM_TEMP):
 		await message.answer("{0} Температура в комнате, {1:.1f}С\r\nтемпература ниже нормы".format(sensor.time, sensor.temp))
@@ -73,7 +73,7 @@ async def get_parametrs(message: types.Message):
 async def get_parametrs(message: types.Message):
 	await message.answer("что поменять?", reply_markup=keyboard_servis)
 	
-@dispb.message_handler(Text(equals="интервал времени")) # 
+@dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
 async def get_parametrs(message: types.Message):
 	with open('test.txt','w') as file:
 			file.write('тестовая сторка')
