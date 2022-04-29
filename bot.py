@@ -28,7 +28,7 @@ keyboard_servis.add(*buttons_log).add(*buttons_beck)
 keyboard_size = types.ReplyKeyboardMarkup(resize_keyboard=True)
 buttons_size = ["1 час", "3 часа","6 часов","12 часов","24 часа"]
 #buttons_beck = ["назад"]
-keyboard_servis.add(*buttons_size)#.add(*buttons_beck)
+keyboard_size.add(*buttons_size)#.add(*buttons_beck)
 
 
 
