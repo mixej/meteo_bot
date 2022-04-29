@@ -79,7 +79,7 @@ async def servis(message: types.Message):
 	await message.answer("что поменять?", reply_markup=keyboard_servis)
 	
 @dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
-async def size_change(message: types.Message):
+async def size_change(message):
 	if message.text == "назад":
 		await message.answer("есть",reply_markup=keyboard_servis)	
 	else:
