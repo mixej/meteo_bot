@@ -80,18 +80,21 @@ async def servis(message: types.Message):
 	
 @dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
 async def size_change(message: types.Message):
+	if massege.Text == "назад":
+		await message.answer("есть",reply_markup=keyboard_servis)	
+	else:
 	await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
 	
 	
 	with open('test.txt','w') as file:
 			file.write('тестовая сторка')
 	
-	await message.answer("готово", reply_markup=keyboard_servis)
+#	await message.answer("готово", reply_markup=keyboard_servis)
 	
 	
-@dispb.message_handler(Text(equals="назад")) # возврат назад
-async def get_parametrs(message: types.Message):
-	await message.answer("есть",reply_markup=keyboard_main)	
+#@dispb.message_handler(Text(equals="назад")) # возврат назад
+#async def get_parametrs(message: types.Message):
+#	await message.answer("есть",reply_markup=keyboard_main)	
 	
 	
 	
