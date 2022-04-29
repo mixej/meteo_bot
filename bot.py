@@ -80,13 +80,15 @@ async def get_press(message: types.Message):
 async def servis(message: Message):
 	if message.text == "сервис":
 		await message.answer("что поменять?", reply_markup=keyboard_servis)
-		if message.text == "интервал времени":
-			await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
-		elif message.text == "назад":
-			await message.answer("есть",reply_markup=keyboard_servis)
 	elif message.text == "назад":
 		await message.answer("есть",reply_markup=keyboard_main)
-
+	else:	
+		if message.text == "интервал времени":
+			await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
+		elif message.text == "интервал записи":
+			await message.answer("с каким интервалом считывать показания?", reply_markup=keyboard_size)
+		elif message.text == "назад":
+			await message.answer("есть",reply_markup=keyboard_servis)
 
 
 '''
