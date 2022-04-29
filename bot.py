@@ -80,7 +80,7 @@ async def servis(message: types.Message):
 	
 @dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
 async def size_change(message: types.Message):
-	if message.Text == "назад":
+	if message.text == "назад":
 		await message.answer("есть",reply_markup=keyboard_servis)	
 	else:
 		await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
