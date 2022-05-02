@@ -39,8 +39,10 @@ def start_bot():
 	loop = asyncio.new_event_loop()
 	asyncio.set_event_loop(loop)
 	executor.start_polling(dispb)
+	
+	
 		
-		
+###########################################################		
 @dispb.message_handler(commands="start")		# главное меню
 async def cmd_start(message: types.Message):
 	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard_main )
@@ -74,6 +76,8 @@ async def get_press(message: types.Message):
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление выше нормы".format(sensor.time, sensor.press))
 	else:
 		await message.answer("{0} Давление, {1:.1f} мм рт.ст\r\nдавление в норме".format(sensor.time, sensor.press))	
+###############################################################
+
 
 
 @dispb.message_handler(content_types=['text'])
@@ -91,28 +95,6 @@ async def servis(message: Message):
 			await message.answer("есть",reply_markup=keyboard_servis)
 
 
-'''
-@dispb.message_handler(Text(equals="сервис")) # меню сервис
-async def servis(message: types.Message):
-	await message.answer("что поменять?", reply_markup=keyboard_servis)
-	
-
-@dispb.message_handler(Text(equals="интервал времени")) # что и куда непонятно
-async def size_change(message: types.Message):
-	await message.answer("с каким интервалом вести запись?", reply_markup=keyboard_size)
-	
-	
-	with open('test.txt','w') as file:
-			file.write('тестовая сторка')
-	
-#	await message.answer("готово", reply_markup=keyboard_servis)
-	
-	
-@dispb.message_handler(Text(equals="назад")) # возврат назад
-async def get_parametrs(message: types.Message):
-	await message.answer("есть",reply_markup=keyboard_main)	
-'''	
-	
 	
 	
 	
