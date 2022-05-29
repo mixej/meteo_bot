@@ -12,7 +12,7 @@ class LogWriter:
 	def write_header(self):	
 	# метод для создания шапки лога, проверяет наличие запесей в файле и при отсутствии таковых записывает шапку	
 		with open(FILENAME,'w') as file:
-			file.write('Date,Time,Temp,Hum,Press\r\n')
+			file.write('Date;Time;Temp;Hum;Press\r\n')
 	
 	def dir_make(self):
 	# создание директории для лога данных
@@ -38,7 +38,7 @@ class LogWriter:
 		sensor = Sensor()		
 		if all(var is not None for var in [sensor.hum, sensor.press, sensor.temp]) and os.stat(FILENAME).st_size <= MAXFILESIZE:
 			with open(FILENAME,'a+') as file:
-				file.write('{0},{1},{2:0.1f},{3:0.1f},{4:0.1f}\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
+				file.write('{0};{1};{2:0.1f};{3:0.1f};{4:0.1f}\r\n'.format(sensor.date, sensor.time, sensor.temp, sensor.hum, sensor.press))
 		else:
 			self.file_cp()
 
