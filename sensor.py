@@ -25,6 +25,6 @@ class Sensor:
 		self.hum = h
 		self.press = p/133.3
 		self.temp = t
-		self.date = time.strftime('%m-%d-%y')
+		self.date = time.strftime('%d-%m-%y')
 		self.time = time.strftime('%H:%M')
 		
