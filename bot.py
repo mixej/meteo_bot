@@ -42,7 +42,7 @@ def start_bot():
 	
 	
 		
-###########################################################		
+##############################################################		
 @dispb.message_handler(commands="start")		# главное меню
 async def cmd_start(message: types.Message):
 	await message.answer("Привет! какие показания тебя интересуют?", reply_markup=keyboard_main )
